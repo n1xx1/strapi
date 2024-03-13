@@ -8050,6 +8050,7 @@ __metadata:
     preferred-pm: "npm:3.1.2"
     tsconfig: "npm:4.20.3"
     yup: "npm:0.32.9"
+    zod: "npm:^3.22.4"
   languageName: unknown
   linkType: soft
 
@@ -29532,5 +29533,12 @@ __metadata:
     property-expr: "npm:^2.0.4"
     toposort: "npm:^2.0.2"
   checksum: 1d197db109381bcd2633bf4f960ed78db02edf58800648c1a693c5a463fb6b66837a57426f1700fc935c8525380eba7398fa406d71d88f99876a562d6cc020d8
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 73622ca36a916f785cf528fe612a884b3e0f183dbe6b33365a7d0fc92abdbedf7804c5e2bd8df0a278e1472106d46674281397a3dd800fa9031dc3429758c6ac
   languageName: node
   linkType: hard
