@@ -550,8 +550,7 @@ class Strapi extends Container implements Core.Strapi {
 
     await this.startWebhooks();
 
-    await this.server.initMiddlewares();
-    this.server.initRouting();
+    await this.server.bootstrap();
 
     await this.contentAPI.permissions.registerActions();
 

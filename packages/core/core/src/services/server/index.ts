@@ -79,16 +79,9 @@ const createServer = (strapi: Core.Strapi): Modules.Server.Server => {
       return this;
     },
 
-    initRouting() {
-      registerAllRoutes(strapi);
-
-      return this;
-    },
-
-    async initMiddlewares() {
+    async bootstrap() {
       await registerApplicationMiddlewares(strapi);
-
-      return this;
+      await registerAllRoutes(strapi);
     },
 
     listRoutes() {

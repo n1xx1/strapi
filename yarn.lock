@@ -4255,16 +4255,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@koa/router@npm:10.1.1":
-  version: 10.1.1
-  resolution: "@koa/router@npm:10.1.1"
+"@koa/router@npm:12.0.1":
+  version: 12.0.1
+  resolution: "@koa/router@npm:12.0.1"
   dependencies:
-    debug: "npm:^4.1.1"
-    http-errors: "npm:^1.7.3"
+    debug: "npm:^4.3.4"
+    http-errors: "npm:^2.0.0"
     koa-compose: "npm:^4.1.0"
     methods: "npm:^1.1.2"
-    path-to-regexp: "npm:^6.1.0"
-  checksum: 8a990f1b6c1bfd7d86047b73ba4a164a81e71d0af570f1bc7967d6e8d7125524d3e8948927ae8fb1d9b8ebf739b1ba732e40af006973e410995f5656aa58fece
+    path-to-regexp: "npm:^6.2.1"
+  checksum: f9427c8eb21a2d7c880dae192b7298ecb243af32a8270b5e3e32c4420da157111bc326ab0bc75ff0f17320b9d9ab9df235295fc2d53d8681b5a14103c27ad22d
   languageName: node
   linkType: hard
 
@@ -7135,7 +7135,7 @@ __metadata:
   resolution: "@strapi/core@workspace:packages/core/core"
   dependencies:
     "@koa/cors": "npm:3.4.3"
-    "@koa/router": "npm:10.1.1"
+    "@koa/router": "npm:12.0.1"
     "@paralleldrive/cuid2": "npm:2.2.2"
     "@strapi/admin": "npm:5.0.0-beta.0"
     "@strapi/database": "npm:5.0.0-beta.0"
@@ -8041,7 +8041,7 @@ __metadata:
   dependencies:
     "@casl/ability": "npm:6.5.0"
     "@koa/cors": "npm:3.4.3"
-    "@koa/router": "npm:10.1.1"
+    "@koa/router": "npm:12.0.1"
     "@strapi/database": "npm:5.0.0-beta.0"
     "@strapi/logger": "npm:5.0.0-beta.0"
     "@strapi/pack-up": "npm:5.0.0-beta.0"
@@ -17881,7 +17881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-errors@npm:2.0.0":
+"http-errors@npm:2.0.0, http-errors@npm:^2.0.0":
   version: 2.0.0
   resolution: "http-errors@npm:2.0.0"
   dependencies:
@@ -23944,7 +23944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-to-regexp@npm:6.2.1, path-to-regexp@npm:^6.1.0, path-to-regexp@npm:^6.2.0":
+"path-to-regexp@npm:6.2.1, path-to-regexp@npm:^6.2.0, path-to-regexp@npm:^6.2.1":
   version: 6.2.1
   resolution: "path-to-regexp@npm:6.2.1"
   checksum: 1e266be712d1a08086ee77beab12a1804842ec635dfed44f9ee1ba960a0e01cec8063fb8c92561115cdc0ce73158cdc7766e353ffa039340b4a85b370084c4d4

@@ -23,8 +23,7 @@ export interface Server {
   use(...args: Parameters<Koa['use']>): Server;
   routes(routes: Core.Router | Omit<Core.Route, 'info'>[]): this;
   mount(): this;
-  initRouting(): this;
-  initMiddlewares(): Promise<this>;
+  bootstrap(): Promise<void>;
   listRoutes(): Router.Layer[];
   listen: HTTPServer['listen'];
   destroy(): Promise<void>;
