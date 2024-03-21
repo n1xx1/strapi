@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import { useFetchClient } from '@strapi/helper-plugin';
-import { useAPIErrorHandler, useNotification } from '@strapi/strapi/admin';
+import { useAPIErrorHandler, useNotification, useFetchClient } from '@strapi/strapi/admin';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery } from 'react-query';
 
@@ -28,7 +27,9 @@ export const useDocumentation = () => {
     if (isError && error) {
       toggleNotification({
         type: 'danger',
-        message: error ? formatAPIError(error) : formatMessage({ id: 'notification.error' }),
+        message: error
+          ? formatAPIError(error)
+          : formatMessage({ id: 'notification.error', defaultMessage: 'An error occurred' }),
       });
     }
   }, [isError, error, toggleNotification, formatAPIError, formatMessage]);

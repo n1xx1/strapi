@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useQueryParams } from '@strapi/admin/strapi-admin';
 import { DesignSystemProvider } from '@strapi/design-system';
-import { usePersistentState, useSelectionState } from '@strapi/helper-plugin';
 import { render as renderRTL, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
@@ -15,6 +14,8 @@ import { useAssets } from '../../../../hooks/useAssets';
 import { useFolder } from '../../../../hooks/useFolder';
 import { useFolders } from '../../../../hooks/useFolders';
 import { useMediaLibraryPermissions } from '../../../../hooks/useMediaLibraryPermissions';
+import { usePersistentState } from '../../../../hooks/usePersistentState';
+import { useSelectionState } from '../../../../hooks/useSelectionState';
 
 const FIXTURE_ASSET_PAGINATION = {
   pageCount: 1,
@@ -66,13 +67,12 @@ jest.mock('../../../../hooks/useMediaLibraryPermissions');
 jest.mock('../../../../hooks/useFolders');
 jest.mock('../../../../hooks/useFolder');
 jest.mock('../../../../hooks/useAssets');
-jest.mock('@strapi/helper-plugin', () => ({
-  ...jest.requireActual('@strapi/helper-plugin'),
-  useRBAC: jest.fn(),
-  useRBACProvider: jest.fn().mockReturnValue({ allPermissions: [] }),
+jest.mock('../../../../hooks/useSelectionState', () => ({
   useSelectionState: jest
     .fn()
     .mockReturnValue([[], { selectOne: jest.fn(), selectAll: jest.fn() }]),
+}));
+jest.mock('../../../../hooks/usePersistentState', () => ({
   usePersistentState: jest.fn().mockReturnValue([0, jest.fn()]),
 }));
 const renderML = () => ({

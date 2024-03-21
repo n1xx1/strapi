@@ -1,6 +1,13 @@
 import * as React from 'react';
 
 import {
+  useNotification,
+  useAPIErrorHandler,
+  Form,
+  FormHelpers,
+  useAuth,
+} from '@strapi/admin/strapi-admin';
+import {
   Box,
   Button,
   Divider,
@@ -18,12 +25,10 @@ import {
   Tabs,
   Typography,
 } from '@strapi/design-system';
-import { useRBACProvider } from '@strapi/helper-plugin';
 import { Pencil } from '@strapi/icons';
-import { useNotification, useAPIErrorHandler, Form, FormHelpers } from '@strapi/strapi/admin';
 import { useIntl } from 'react-intl';
 
-import { UpdateLocale, Locale } from '../../../shared/contracts/locales';
+import { Locale, UpdateLocale } from '../../../shared/contracts/locales';
 import { useUpdateLocaleMutation } from '../services/locales';
 import { isBaseQueryError } from '../utils/baseQuery';
 import { getTranslation } from '../utils/getTranslation';
@@ -81,7 +86,7 @@ const EditModal = ({ id, code, isDefault, name, onClose }: EditModalProps) => {
     _unstableFormatAPIError: formatAPIError,
     _unstableFormatValidationErrors: formatValidationErrors,
   } = useAPIErrorHandler();
-  const { refetchPermissions } = useRBACProvider();
+  const refetchPermissions = useAuth('EditModal', (state) => state.refetchPermissions);
   const { formatMessage } = useIntl();
   const titleId = React.useId();
 

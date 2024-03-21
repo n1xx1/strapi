@@ -1,9 +1,8 @@
 import * as React from 'react';
 
 import { ContentLayout, EmptyStateLayout, HeaderLayout, LinkButton } from '@strapi/design-system';
-import { useRBAC } from '@strapi/helper-plugin';
 import { EmptyDocuments, Plus } from '@strapi/icons';
-import { Entity } from '@strapi/types';
+import { Data } from '@strapi/types';
 import * as qs from 'qs';
 import { Helmet } from 'react-helmet';
 import { useIntl } from 'react-intl';
@@ -16,6 +15,7 @@ import { useNotification } from '../../../../features/Notifications';
 import { useTracking } from '../../../../features/Tracking';
 import { useAPIErrorHandler } from '../../../../hooks/useAPIErrorHandler';
 import { useOnce } from '../../../../hooks/useOnce';
+import { useRBAC } from '../../../../hooks/useRBAC';
 import { useDeleteAPITokenMutation, useGetAPITokensQuery } from '../../../../services/apiTokens';
 import { API_TOKEN_TYPE } from '../../components/Tokens/constants';
 import { Table } from '../../components/Tokens/Table';
@@ -105,7 +105,7 @@ export const ListView = () => {
 
   const [deleteToken] = useDeleteAPITokenMutation();
 
-  const handleDelete = async (id: Entity.ID) => {
+  const handleDelete = async (id: Data.ID) => {
     try {
       const res = await deleteToken(id);
 

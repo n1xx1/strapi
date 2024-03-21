@@ -11,7 +11,6 @@ import {
   Typography,
   useNotifyAT,
 } from '@strapi/design-system';
-import { useFetchClient, useRBAC } from '@strapi/helper-plugin';
 import { Check } from '@strapi/icons';
 import {
   useAPIErrorHandler,
@@ -19,6 +18,8 @@ import {
   Form,
   InputRenderer,
   useNotification,
+  useFetchClient,
+  useRBAC,
 } from '@strapi/strapi/admin';
 import { Helmet } from 'react-helmet';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,17 @@
 import * as React from 'react';
 
 import {
+  Form,
+  type InputProps,
+  InputRenderer,
+  useField,
+  type FormHelpers,
+  useForm,
+  useAPIErrorHandler,
+  useNotification,
+  useAuth,
+} from '@strapi/admin/strapi-admin';
+import {
   Box,
   Button,
   ButtonProps,
@@ -21,18 +32,7 @@ import {
   Tabs,
   Typography,
 } from '@strapi/design-system';
-import { useRBACProvider } from '@strapi/helper-plugin';
 import { Check, Plus } from '@strapi/icons';
-import {
-  Form,
-  type InputProps,
-  InputRenderer,
-  useField,
-  type FormHelpers,
-  useForm,
-  useAPIErrorHandler,
-  useNotification,
-} from '@strapi/strapi/admin';
 import { useIntl } from 'react-intl';
 import * as yup from 'yup';
 
@@ -116,7 +116,7 @@ const CreateModal = ({ onClose }: ModalCreateProps) => {
   } = useAPIErrorHandler();
   const [createLocale] = useCreateLocaleMutation();
   const { formatMessage } = useIntl();
-  const { refetchPermissions } = useRBACProvider();
+  const refetchPermissions = useAuth('CreateModal', (state) => state.refetchPermissions);
 
   const handleSubmit = async (values: FormValues, helpers: FormHelpers<FormValues>) => {
     try {

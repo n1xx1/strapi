@@ -15,10 +15,9 @@ import {
   VisuallyHidden,
 } from '@strapi/design-system';
 import { Link, LinkButton } from '@strapi/design-system/v2';
-import { onRowClick, useRBAC } from '@strapi/helper-plugin';
 import { Pencil, Plus, Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { ConfirmDialog } from '../../../../../../../admin/src/components/ConfirmDialog';
@@ -28,6 +27,7 @@ import { useNotification } from '../../../../../../../admin/src/features/Notific
 import { useTracking } from '../../../../../../../admin/src/features/Tracking';
 import { useAPIErrorHandler } from '../../../../../../../admin/src/hooks/useAPIErrorHandler';
 import { useContentTypes } from '../../../../../../../admin/src/hooks/useContentTypes';
+import { useRBAC } from '../../../../../../../admin/src/hooks/useRBAC';
 import { useLicenseLimits } from '../../../../hooks/useLicenseLimits';
 
 import * as Layout from './components/Layout';
@@ -159,7 +159,8 @@ export const ReviewWorkflowsListView = () => {
             <LinkButton
               startIcon={<Plus />}
               size="S"
-              // @ts-expect-error - types are not inferred correctly through the as prop.
+              as={NavLink}
+              // @ts-expect-error – the `as` prop does not correctly infer the props of it's component
               to="/settings/review-workflows/create"
               onClick={(event) => {
                 /**
@@ -290,17 +291,15 @@ export const ReviewWorkflowsListView = () => {
             <Tbody>
               {workflows?.map((workflow) => (
                 <Tr
-                  {...onRowClick({
-                    fn(event) {
-                      const el = event.target as HTMLElement;
-                      // Abort row onClick event when the user click on the delete button
-                      if (el.nodeName === 'BUTTON') {
-                        return;
-                      }
+                  onClick={(event) => {
+                    const el = event.target as HTMLElement;
+                    // Abort row onClick event when the user click on the delete button
+                    if (el.nodeName === 'BUTTON') {
+                      return;
+                    }
 
-                      navigate(`/settings/review-workflows/${workflow.id}`);
-                    },
-                  })}
+                    navigate(`/settings/review-workflows/${workflow.id}`);
+                  }}
                   key={`workflow-${workflow.id}`}
                 >
                   <Td width={`${250 / 16}rem`}>
